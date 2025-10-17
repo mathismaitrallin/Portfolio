@@ -1,0 +1,323 @@
+<!--
+  index.html
+  Portfolio (single-file) for: Mathis Maitrallin — Data Scientist | Data Analyst
+
+  Instructions:
+  - This is a single-file, production-ready static site suitable for GitHub Pages.
+  - To deploy: create a repo named <username>.github.io, push this file as index.html to the root, enable GitHub Pages (main branch). Or publish from any repo via gh-pages branch.
+  - To edit projects: search for the JS array `projects` near the end of the file and update/add project objects.
+  - To add external links (GitHub/LinkedIn): update the social links in the header/footer (commented).
+  - No external assets required. Everything is inline (styles + JS).
+-->
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mathis Maitrallin — Data Scientist | Data Analyst</title>
+  <meta name="description" content="Portfolio de Mathis Maitrallin — Data Scientist | Data Analyst. Projets organisés par thématiques : Football, Finance, E-commerce, Machine Learning." />
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f13; /* near-black */
+      --panel:#0f1620;
+      --muted:#97a0b3;
+      --accent:#3dd1ff; /* electric blue */
+      --accent-2:#6bd3a8;
+      --glass: rgba(255,255,255,0.03);
+      --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:radial-gradient(1200px 600px at 10% 10%, rgba(61,209,255,0.03), transparent), var(--bg);color:#e6eef8;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    a{color:var(--accent);text-decoration:none}
+
+    .container{max-width:var(--maxw);margin:40px auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#051219;font-size:18px}
+    .title{line-height:1}
+    .title h1{margin:0;font-size:20px}
+    .title p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-size:14px}
+    nav a:hover{background:rgba(255,255,255,0.02);color:var(--accent)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center}
+    .hero-card{background:var(--panel);border-radius:var(--radius);padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
+    .intro h2{margin:0 0 8px 0;font-size:28px}
+    .intro p{color:var(--muted);margin:0 0 18px;font-size:15px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:10px;font-weight:600;border:1px solid rgba(255,255,255,0.04);background:transparent;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021018;border:none}
+
+    .quick{background:var(--glass);padding:20px;border-radius:12px;color:var(--muted)}
+    .quick h4{margin:0 0 12px 0}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px}
+
+    /* Projects */
+    .section{margin-top:40px}
+    .section h3{margin:0 0 16px 0}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.03);cursor:pointer;color:var(--muted)}
+    .filter.active{background:linear-gradient(90deg, rgba(61,209,255,0.06), rgba(107,211,168,0.03));color:var(--accent)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 20px rgba(2,6,23,0.5);transition:transform .28s ease, box-shadow .28s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(3,8,30,0.6)}
+    .card h4{margin:0 0 8px 0}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:12px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:12px;color:var(--muted)}
+    .card .actions{display:flex;gap:8px;margin-top:12px}
+    .link-btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);font-size:13px;color:var(--muted)}
+    .link-btn.primary{border:none;background:rgba(61,209,255,0.08);color:var(--accent)}
+
+    /* Skills */
+    .skills{display:flex;gap:18px;flex-wrap:wrap}
+    .skill{background:var(--panel);padding:12px;border-radius:12px;min-width:160px}
+    .bar{height:8px;background:rgba(255,255,255,0.03);border-radius:99px;margin-top:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px}
+
+    /* About & contact */
+    .about{display:grid;grid-template-columns:1fr 320px;gap:24px}
+
+    footer{margin-top:40px;padding:18px 0;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .about{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){
+      .grid{grid-template-columns:1fr}
+      .container{padding:18px;margin:24px auto}
+      .logo{width:48px;height:48px}
+    }
+
+    /* small animation helpers */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MM</div>
+        <div class="title">
+          <h1>Mathis Maitrallin — Data Scientist | Data Analyst</h1>
+          <p>Projets organisés par thématiques · Python · Power BI · Visualisation & ML</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card reveal">
+        <div class="intro">
+          <h2>Transforming data into actionable insights.</h2>
+          <p>Je construis des analyses et dashboards clairs et orientés métier. Python pour l'extraction et la modélisation, Power BI pour le storytelling et la prise de décision.</p>
+        </div>
+
+        <div class="cta">
+          <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Voir mes projets</button>
+          <a class="btn" href="#contact">Me contacter</a>
+        </div>
+
+        <div style="height:16px"></div>
+        <div class="quick">
+          <h4>Résumé technique</h4>
+          <div class="chips">
+            <div class="chip">Python (Pandas, scikit-learn)</div>
+            <div class="chip">Power BI</div>
+            <div class="chip">SQL</div>
+            <div class="chip">Streamlit / Dash</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="quick reveal">
+        <h4>Catégories</h4>
+        <div style="height:10px"></div>
+        <div class="chips">
+          <div class="chip">⚽ Football</div>
+          <div class="chip">💰 Finance</div>
+          <div class="chip">🛒 E-commerce</div>
+          <div class="chip">🧠 Machine Learning</div>
+        </div>
+
+        <div style="height:16px"></div>
+        <h4>Prêt pour GitHub Pages</h4>
+        <p style="color:var(--muted);font-size:13px;margin:6px 0 0">Copie ce fichier en tant que <code>index.html</code> dans le root d'un repo et active GitHub Pages.</p>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+      <h3>Projets</h3>
+
+      <div class="filters" id="filters"></div>
+
+      <div class="grid" id="projects-grid">
+        <!-- JS will populate -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <h3>Compétences</h3>
+      <div class="skills">
+        <div class="skill">
+          <strong>Python / Data Wrangling</strong>
+          <div class="bar" aria-hidden><i style="width:92%"></i></div>
+          <div style="height:8px"></div>
+          <div class="meta">Pandas, NumPy, data cleaning, ETL</div>
+        </div>
+        <div class="skill">
+          <strong>Power BI</strong>
+          <div class="bar" aria-hidden><i style="width:84%"></i></div>
+          <div style="height:8px"></div>
+          <div class="meta">Dashboards, DAX basics, storytelling</div>
+        </div>
+        <div class="skill">
+          <strong>Machine Learning</strong>
+          <div class="bar" aria-hidden><i style="width:72%"></i></div>
+          <div style="height:8px"></div>
+          <div class="meta">Scikit-learn, feature engineering, model eval</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <h3>À propos</h3>
+      <div class="about">
+        <div class="hero-card">
+          <p>Je suis <strong>Mathis Maitrallin</strong>, Data Scientist / Data Analyst. J'aime résoudre des problèmes concrets par l'analyse de données et la création de dashboards clairs. Je cherche un poste junior où je peux appliquer mes compétences en Python et Power BI pour délivrer de la valeur métier.</p>
+
+          <p style="color:var(--muted);font-size:14px;margin-top:12px">Méthodologie : comprendre le besoin métier → nettoyer les données → construire les indicateurs → visualiser / modéliser → communiquer les résultats.</p>
+        </div>
+
+        <aside class="quick">
+          <h4>Ce que je cherche</h4>
+          <p style="font-size:14px;color:var(--muted)">Un poste junior en data où je peux apprendre et contribuer sur des sujets liés au sport, à la finance ou au e-commerce.</p>
+
+          <div style="height:8px"></div>
+          <h4>Format des livrables</h4>
+          <p style="font-size:13px;color:var(--muted)">Notebooks clairs, dashboards Power BI publiables, et petites apps Streamlit pour démos interactives.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <h3>Contact</h3>
+      <div class="hero-card">
+        <p>Tu peux ajouter ici ton mail ou un formulaire. Pour l'instant, laisse <strong>ton adresse email</strong> à jour dans le HTML.</p>
+        <div style="height:12px"></div>
+        <p style="color:var(--muted);font-size:13px">Exemple : <code>mathis@example.com</code></p>
+      </div>
+    </section>
+
+    <footer>
+      <small>© <span id="year"></span> Mathis Maitrallin — Data Scientist | Data Analyst</small>
+    </footer>
+  </div>
+
+  <script>
+    // ---- Helper: projects data ----
+    // Edit this array to add/remove projects. Fields:
+    // id, title, desc, category (one of 'Football','Finance','E-commerce','Machine Learning'), tags (array), repo (url), live (url or null)
+    const projects = [
+      {id:1, title:'Analyse performances - Ligue', desc:'Exploration des métriques players (xG, passes clé) et clusterisation de profils.', category:'Football', tags:['Pandas','Viz','Clustering'], repo:'#', live:null},
+      {id:2, title:'Prédiction match - saison', desc:'Modèle de classification pour prédire le résultat de matchs en fonction des features contextuelles.', category:'Football', tags:['scikit-learn','features'], repo:'#', live:null},
+
+      {id:3, title:'Dashboard portefeuille', desc:'Dashboard Power BI montrant la performance et les allocations d'un portefeuille fictif.', category:'Finance', tags:['Power BI','DAX'], repo:'#', live:null},
+      {id:4, title:'Prévision de prix (Prophet)', desc:'Expérimentation avec Prophet sur séries temporelles financières.', category:'Finance', tags:['Prophet','Time Series'], repo:'#', live:null},
+
+      {id:5, title:'Analyse ventes e-commerce', desc:'RFM, churn et segmentation clients pour augmenter le taux de retention.', category:'E-commerce', tags:['Pandas','RFM'], repo:'#', live:null},
+      {id:6, title:'Recommandation produits', desc:'Prototype de recommandation basé sur similarité d'items.', category:'E-commerce', tags:['Embeddings','NLP'], repo:'#', live:null},
+
+      {id:7, title:'Titanic - modèle explicable', desc:'Pipeline ML avec feature engineering et interprétabilité (SHAP).', category:'Machine Learning', tags:['scikit-learn','SHAP'], repo:'#', live:null},
+      {id:8, title:'Reconnaissance chiffres (CTC)', desc:'Réseau de neurones pour reconnaître 2-4 chiffres en image (CTC loss).', category:'Machine Learning', tags:['Keras','CNN'], repo:'#', live:null}
+    ];
+
+    // ---- Render filters ----
+    const categories = ['All','Football','Finance','E-commerce','Machine Learning'];
+    const filtersEl = document.getElementById('filters');
+    categories.forEach((c,i)=>{
+      const btn = document.createElement('button');
+      btn.className='filter'+(i===0?' active':'');
+      btn.textContent=c;
+      btn.onclick=()=>{document.querySelectorAll('.filter').forEach(el=>el.classList.remove('active'));btn.classList.add('active');renderProjects(c==='All'?null:c)};
+      filtersEl.appendChild(btn);
+    });
+
+    // ---- Render projects ----
+    const grid = document.getElementById('projects-grid');
+    function renderProjects(filter){
+      grid.innerHTML='';
+      const list = filter?projects.filter(p=>p.category===filter):projects;
+      list.forEach(p=>{
+        const card = document.createElement('article');
+        card.className='card reveal';
+        card.innerHTML = `
+          <div>
+            <h4>${escapeHtml(p.title)}</h4>
+            <div class="meta">${escapeHtml(p.category)} · <span style="color:var(--muted)">${escapeHtml(p.tags.join(', '))}</span></div>
+            <div style="color:var(--muted);font-size:14px">${escapeHtml(p.desc)}</div>
+          </div>
+          <div class="actions">
+            ${p.repo?`<a class="link-btn" href="${p.repo}" target="_blank" rel="noopener">Code</a>`:''}
+            ${p.live?`<a class="link-btn primary" href="${p.live}" target="_blank" rel="noopener">Live</a>`:''}
+            <a class="link-btn" href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      observeReveals();
+    }
+
+    // small escape helper
+    function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+    // ---- Intersection Observer for reveal animation ----
+    let observer = null;
+    function observeReveals(){
+      const reveals = document.querySelectorAll('.reveal');
+      if(observer)reveals.forEach(r=>observer.observe(r));
+      else{
+        observer = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}},{threshold:0.12});
+        reveals.forEach(r=>observer.observe(r));
+      }
+    }
+
+    // ---- init ----
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderProjects(null);
+
+    // small enhancement: smooth scroll for nav
+    document.querySelectorAll('nav a').forEach(a=>{a.addEventListener('click', e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);document.getElementById(id).scrollIntoView({behavior:'smooth'})})});
+
+  </script>
+</body>
+</html>
