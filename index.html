@@ -7,6 +7,7 @@
   <meta name="description" content="Portfolio de Mathis Maitrallin — Data Scientist | Data Analyst. Projets organisés par thématiques : Football, Finance, E-commerce, Machine Learning." />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/a2d04b6f04.js" crossorigin="anonymous"></script>
 
 
@@ -613,6 +614,20 @@ body {
   background: transparent;
 }
 
+.cv-button {
+  padding: 8px 14px;
+  border: 1px solid #00d4ff;
+  border-radius: 20px;
+  color: #00d4ff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cv-button:hover {
+  background-color: #00d4ff;
+  color: #000;
+}
+
   </style>
 </head>
 <body>
@@ -628,6 +643,10 @@ body {
   <div class="logo-text">
     Mathis <span>Maitrallin</span>
   </div>
+  <!-- Icône CV -->
+  <a href="CV Mathis Maitrallin Data Scientist.pdf" target="_blank" class="cv-button">
+  <i class="fas fa-file-pdf"></i> Voir mon CV
+</a>
 </div>
 
 
@@ -879,6 +898,23 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .orbit-node { transition:none !important; animation:none !important; }
   .node-pill { transition:none !important; }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cv-link {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.cv-link:hover {
+  color: #00d4ff; /* couleur au survol */
+  transform: scale(1.1);
 }
 </style>
 
