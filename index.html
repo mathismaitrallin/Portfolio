@@ -1200,6 +1200,22 @@ function sendMessage(e){
   <script>
     const projects = [
       {
+          id:4,
+          title:"Accompagnement d’une chaîne d’hôtellerie",
+          desc:'Ajustement des prix, des stocks et des ressources humaines via une pipeline ETL.',
+          category:'ETL',
+          tags:['Python','GCP', 'FastAPI','Scikit-learn'],
+          live: 'ETL Hôtel.pdf', 
+    },
+    {
+          id:3,
+          title:'Détecteur automatique de faux billets',
+          desc:'Application pour détecter les faux billets à partir de leurs caractéristiques.',
+          category:'Machine Learning',
+          tags:['Streamlit','Pandas', 'Scikit-learn','Matplotlib'],
+          live: 'https://github.com/mathismaitrallin/D-tection-de-faux-billets', 
+    },
+      {
           id: 1,
           title: 'Indicateur de domination',
           desc: 'Application pour visualiser le momentum d’un match de football.',
@@ -1214,14 +1230,6 @@ function sendMessage(e){
           category:'Football',
           tags:['Streamlit','Pandas','Matplotlib'],
           live: 'https://danger-passes-mathis-maitrallin.streamlit.app', 
-    },
-    {
-          id:3,
-          title:'Détecteur automatique de faux billets',
-          desc:'Application pour détecter les faux billets à partir de leurs caractéristiques.',
-          category:'Machine Learning',
-          tags:['Streamlit','Pandas', 'Scikit-learn','Matplotlib'],
-          live: 'https://github.com/mathismaitrallin/D-tection-de-faux-billets', 
     }/*,
       {id:3,title:'Dashboard portefeuille',desc:'Dashboard Power BI montrant la performance et les allocations d\'un portefeuille fictif.',category:'Finance',tags:['Power BI','DAX'],repo:'#',live:null},
       {id:4,title:'Prévision de prix (Prophet)',desc:'Expérimentation avec Prophet sur séries temporelles financières.',category:'Finance',tags:['Prophet','Time Series'],repo:'#',live:null},
@@ -1231,7 +1239,7 @@ function sendMessage(e){
       {id:8,title:'Reconnaissance chiffres (CTC)',desc:'Réseau de neurones pour reconnaître 2-4 chiffres en image (CTC loss).',category:'Machine Learning',tags:['Keras','CNN'],repo:'#',live:null}
    */ ];
 
-    const categories=['All','Football','Machine Learning'];
+    const categories=['All','ETL','Machine Learning','Football'];
     const filtersEl=document.getElementById('filters');
     categories.forEach((c,i)=>{
       const btn=document.createElement('button');
