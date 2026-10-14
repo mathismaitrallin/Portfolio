@@ -350,8 +350,8 @@ header .logo:hover .icon {
     .link-btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);font-size:13px;color:var(--muted)}
     .link-btn.primary{background:rgba(61,209,255,0.08);border:none;color:var(--accent)}
 
-    .section-note{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin:-8px 0 16px}
-    .section-note i{color:var(--accent)}
+    .lang-note{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+    .lang-note i{color:var(--accent)}
 
     /* Skills */
     .skills-matrix {
@@ -752,7 +752,6 @@ body {
 <!-- PROJECTS -->
 <section id="projects" class="section reveal">
   <h3>Projects</h3>
-  <p class="section-note"><i class="fas fa-language"></i> Project documents and apps are currently available in French.</p>
   <div class="filters" id="filters"></div>
   <div class="grid" id="projects-grid"></div>
 </section>
@@ -1302,7 +1301,7 @@ function sendMessage(e){
           desc:'Performance analysis of a Premier League striker and a machine learning model that estimates the salary his output justifies, with two scenarios: a new contract or a transfer.',
           category:'Football',
           tags:['Python','SQL','Scikit-learn','Matplotlib','Web scraping'],
-          live: '../Dossier_Kroupi_2025-26.pdf',
+          live: '../Dossier_Kroupi_2025-26_EN.pdf',
     },
       {
           id:2,
@@ -1310,7 +1309,7 @@ function sendMessage(e){
           desc:'Two scores for 47,000 passes, built from player positions (StatsBomb 360 data): danger (the probability of a shot) and the value added compared with the situation before the pass. Models validated with match-grouped cross-validation, plus an interactive app to replay every pass.',
           category:'Football',
           tags:['Python','Scikit-learn','StatsBomb 360','Plotly','Streamlit'],
-          live: 'https://danger-passes-mathis-maitrallin.streamlit.app',
+          live: 'https://danger-passes-mathis-maitrallin.streamlit.app/?lang=en',
     },
       {
           id:4,
@@ -1318,7 +1317,8 @@ function sendMessage(e){
           desc:'Adjusting pricing, inventory and staffing through an ETL pipeline.',
           category:'ETL',
           tags:['Python','GCP', 'FastAPI','Scikit-learn'],
-          live: '../ETL Hôtel.pdf', 
+          live: '../ETL Hôtel.pdf',
+          note: 'In French', 
     },
     {
           id:5,
@@ -1326,7 +1326,8 @@ function sendMessage(e){
           desc:'Automating repetitive order and inventory management tasks.',
           category:'ETL',
           tags:['Python','Pandas', 'Streamlit'],
-          live: '../Commerciaux_Jouets.pdf', 
+          live: '../Commerciaux_Jouets.pdf',
+          note: 'In French', 
     },
     {
           id:3,
@@ -1338,11 +1339,11 @@ function sendMessage(e){
     },
       {
           id: 1,
-          title: 'Match momentum indicator',
+          title: 'Match dominance indicator',
           desc: 'An app to visualise the momentum of a football match.',
           category: 'Football',
           tags: ['Streamlit', 'Pandas', 'Matplotlib'],
-          live: 'https://indicateur-domination-mathis-maitrallin.streamlit.app', 
+          live: 'https://indicateur-domination-mathis-maitrallin.streamlit.app/?lang=en', 
         }/*,
       {id:3,title:'Dashboard portefeuille',desc:'Dashboard Power BI montrant la performance et les allocations d\'un portefeuille fictif.',category:'Finance',tags:['Power BI','DAX'],repo:'#',live:null},
       {id:4,title:'Prévision de prix (Prophet)',desc:'Expérimentation avec Prophet sur séries temporelles financières.',category:'Finance',tags:['Prophet','Time Series'],repo:'#',live:null},
@@ -1385,6 +1386,7 @@ function sendMessage(e){
                 <i class="fas fa-external-link-alt"></i> View project
               </a>` 
               : ''}
+            ${p.note ? `<span class='lang-note'><i class="fas fa-language"></i> ${p.note}</span>` : ''}
           </div>`;
         grid.appendChild(card);
       });
