@@ -1294,6 +1294,14 @@ function sendMessage(e){
   <script>
     const projects = [
       {
+          id:9,
+          title:'Crypto vs stock market: has cryptocurrency become an asset like any other?',
+          desc:'Bitcoin, Ethereum and Solana compared with stocks, bonds and gold since 2018: link to the stock market, volatility, behaviour during crashes and a portfolio simulator. A data pipeline (DuckDB, dbt and 34 data-quality tests) updated daily.',
+          category:'Finance',
+          tags:['Python','SQL','DuckDB','dbt','Streamlit'],
+          live: 'https://crypto-vs-bourse-mathis-maitrallin.streamlit.app/?lang=en',
+    },
+      {
           id:8,
           title:'Ballon d’Or 2026 predictor: simulated jury vote',
           desc:'A ranking model (Plackett-Luce) learned from the editions since 2013, then 10,000 simulations of the 100 jurors’ vote, calibrated on their real ballots. The backtest finds the winner in 8 editions out of 12, plus an app to test your own criteria.',
@@ -1365,7 +1373,7 @@ function sendMessage(e){
       {id:8,title:'Reconnaissance chiffres (CTC)',desc:'Réseau de neurones pour reconnaître 2-4 chiffres en image (CTC loss).',category:'Machine Learning',tags:['Keras','CNN'],repo:'#',live:null}
    */ ];
 
-    const categories=['All','ETL','Machine Learning','Football'];
+    const categories=['All','ETL','Machine Learning','Football','Finance'];
     const filtersEl=document.getElementById('filters');
     categories.forEach((c,i)=>{
       const btn=document.createElement('button');
